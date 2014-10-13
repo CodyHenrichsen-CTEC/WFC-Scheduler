@@ -476,7 +476,16 @@ namespace WFC_Scheduler
                 {
                     studentID = row - 1;
                     String test = requestSheet.Cells[row, 1].Value.ToString();
+                    try
+                    {
+                        studentTime = DateTime.FromOADate(Double.Parse(test));
 
+                    }
+                    catch (Exception parseException)
+                    {
+                        DateTime.TryParse(test, out studentTime);
+                    }
+                   
                     DateTime.TryParse(test, out studentTime);
                     firstName = (String)requestSheet.Cells[row, 2].Value.ToString();
                     lastName = (String)requestSheet.Cells[row, 3].Value.ToString();
