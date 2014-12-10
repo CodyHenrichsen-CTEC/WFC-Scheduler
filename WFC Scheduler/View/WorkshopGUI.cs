@@ -8,10 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using OfficeOpenXml;
+using WFC_Scheduler.Model;
 
-namespace WFC_Scheduler
+namespace WFC_Scheduler.View
 {
-    public partial class WorkshopGUIScreen : Form
+    public partial class WorkshopGUI : Form
     {
 
         private WorkshopData currentData;
@@ -40,7 +41,7 @@ namespace WFC_Scheduler
         }
 
 
-        public WorkshopGUIScreen()
+        public WorkshopGUI()
         {
             InitializeComponent();
             currentData = new WorkshopData();
@@ -134,6 +135,9 @@ namespace WFC_Scheduler
             statusLabel.Text = currentData.StatusText;
             currentData.generateScheduleFromLists();
             statusLabel.Text += currentData.StatusText;
+            String results = statusLabel.Text;
+            statusLabel.Text = "";
+            MessageBox.Show(this, results, "Schedule Information");
             currentData.createWorkshopExportExcel();
             if (currentData.ScheduleOK)
             {

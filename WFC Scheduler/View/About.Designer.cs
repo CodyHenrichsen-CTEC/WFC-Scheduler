@@ -1,4 +1,4 @@
-﻿namespace WFC_Scheduler
+﻿namespace WFC_Scheduler.View
 {
     partial class About
     {

@@ -6,8 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using WFC_Scheduler.Model;
 
-namespace WFC_Scheduler
+namespace WFC_Scheduler.View
 {
     public partial class DistrictPercentages : Form
     {
@@ -218,6 +219,11 @@ namespace WFC_Scheduler
 
             }
             
+        }
+
+        private void canyonsTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

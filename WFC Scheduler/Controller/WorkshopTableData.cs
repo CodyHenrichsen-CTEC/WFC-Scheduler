@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Collections;
 using System.IO;
 
-namespace WFC_Scheduler
+namespace WFC_Scheduler.Controller
 {
     class WorkshopTableData
     {

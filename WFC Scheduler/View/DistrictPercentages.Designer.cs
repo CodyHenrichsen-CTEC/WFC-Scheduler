@@ -1,4 +1,4 @@
-﻿namespace WFC_Scheduler
+﻿namespace WFC_Scheduler.View
 {
     partial class DistrictPercentages
     {
@@ -57,6 +57,7 @@
             this.canyonsTextBox.Name = "canyonsTextBox";
             this.canyonsTextBox.Size = new System.Drawing.Size(63, 20);
             this.canyonsTextBox.TabIndex = 0;
+            this.canyonsTextBox.TextChanged += new System.EventHandler(this.canyonsTextBox_TextChanged);
             // 
             // label1
             // 

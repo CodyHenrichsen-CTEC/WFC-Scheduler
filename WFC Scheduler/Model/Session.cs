@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace WFC_Scheduler
+namespace WFC_Scheduler.Model
 {
     class Session
     {

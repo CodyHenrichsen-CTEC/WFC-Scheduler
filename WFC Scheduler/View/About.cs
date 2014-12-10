@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace WFC_Scheduler
+namespace WFC_Scheduler.View
 {
     public partial class About : Form
     {
