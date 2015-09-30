@@ -222,7 +222,9 @@ namespace WFC_Scheduler.Model
             PopularClasses = PopularClasses.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
         }
 
-
+        /// <summary>
+        /// Checker method for supplied information.
+        /// </summary>
         private void checkDistrictPercentage()
         {
             int totalPercentage = 0;
@@ -239,6 +241,11 @@ namespace WFC_Scheduler.Model
 
         }
 
+        /// <summary>
+        /// Checker method for correct data sheets in submitted XLSX file.
+        /// </summary>
+        /// <param name="current">The ExcelWorkbook file</param>
+        /// <returns>Boolean value based on whether all needed sheets are present.</returns>
         private bool checkSheetsMatch(ExcelWorkbook current)
         {
             bool sheetsMatch = false;
@@ -269,6 +276,9 @@ namespace WFC_Scheduler.Model
 
         }
 
+        /// <summary>
+        /// Method to bring all data from the XLSX file to associated lists.
+        /// </summary>
         private void importExcelDataToLists()
         {
             FileInfo workshopFile = new FileInfo(workshopInfoFilePath);
@@ -319,6 +329,10 @@ namespace WFC_Scheduler.Model
 
         #region Create Lists
 
+        /// <summary>
+        /// Creates a list of all district information.
+        /// </summary>
+        /// <param name="districtSheet"></param>
         private void createDistrictList(ExcelWorksheet districtSheet)
         {
             if (districtList != null && districtList.Count != 0)
@@ -553,6 +567,9 @@ namespace WFC_Scheduler.Model
 
         #endregion
 
+        /// <summary>
+        /// Main method for generating schedules for the Wasatch Front Consortium project.
+        /// </summary>
         public void generateScheduleFromLists()
         {
             List<Student> blankStudents = studentList.FindAll(delegate(Student tempStudent) { return (tempStudent.SessionOne.Length == 0 || tempStudent.SessionTwo.Length == 0 || tempStudent.SessionThree.Length == 0 || tempStudent.SessionOne.Equals(exceedsCount) || tempStudent.SessionTwo.Equals(exceedsCount) || tempStudent.SessionThree.Equals(exceedsCount)); });
@@ -1196,6 +1213,9 @@ namespace WFC_Scheduler.Model
 
         }
 
+        /// <summary>
+        /// Continuing the scheduling to get all straggling schedules.
+        /// </summary>
         private void extraScheduling()
         {
             #region Somehow scheduling missed this student
@@ -1435,6 +1455,9 @@ namespace WFC_Scheduler.Model
 
         }
 
+        /// <summary>
+        /// Check for duplicates within the student schedules
+        /// </summary>
         private void checkDuplicates()
         {
             int dupeCount = 0;
@@ -1458,6 +1481,11 @@ namespace WFC_Scheduler.Model
 
         }
 
+        /// <summary>
+        /// Remove the current student's schedule.
+        /// </summary>
+        /// <param name="currentStudent"></param>
+        /// <param name="outOfClass"></param>
         private void clearSchedule(Student currentStudent, Boolean outOfClass)
         {
             DistrictClass currentDistrictClassCount;
@@ -1506,6 +1534,9 @@ namespace WFC_Scheduler.Model
             }
         }
 
+        /// <summary>
+        /// Export workshop information to to XLSX file.
+        /// </summary>
         public void createWorkshopExportExcel()
         {
             int columnCount = 15;
@@ -1726,6 +1757,10 @@ namespace WFC_Scheduler.Model
         }
 
         //stillOneBlank = sessionList.FindAll(delegate(Session tempSession) { return (tempSession.SessionOneCount < tempSession.SessionPresenter.PresenterRoom.RoomCapacity); });
+       /// <summary>
+       /// Create the XLSX sheet with district information for export.
+       /// </summary>
+       /// <param name="districtCountSheet"></param>
         private void createDistrictSheet(ExcelWorksheet districtCountSheet)
         {
             districtCountSheet.Cells[1, 1].Value = "Session Title";
@@ -1798,6 +1833,9 @@ namespace WFC_Scheduler.Model
             }
         }
 
+        /// <summary>
+        /// Starts the scheduling program.  
+        /// </summary>
         public void startSchedule()
         {
             importExcelDataToLists();
